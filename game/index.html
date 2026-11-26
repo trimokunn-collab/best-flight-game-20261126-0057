@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SKY RUSH — Island Courier</title>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div id="stage">
+  <canvas id="game" width="1280" height="720" aria-label="SKY RUSH Island Courier: fly the courier plane through the rings and land on the runway"></canvas>
+
+  <div id="hud-top" class="hidden">
+    <div class="hud-cell"><span class="hud-label">ALT</span><span id="hud-alt" class="hud-value">0</span><span class="hud-unit">FT</span></div>
+    <div class="hud-cell"><span class="hud-label">SPD</span><span id="hud-spd" class="hud-value">0</span><span class="hud-unit">KT</span></div>
+    <div class="hud-cell"><span class="hud-label">HDG</span><span id="hud-hdg" class="hud-value">090°</span><span class="hud-unit" id="hud-hdg-dir">E</span></div>
+    <div class="hud-cell"><span class="hud-label">THR</span><span id="hud-thr" class="hud-value">0%</span></div>
+    <div class="hud-cell"><span class="hud-label">FUEL</span><span id="hud-fuel" class="hud-value">100</span></div>
+    <div class="hud-cell wide"><span class="hud-label">SCORE</span><span id="hud-score" class="hud-value">0</span></div>
+    <div class="hud-cell wide"><span class="hud-label">MISSION</span><span id="hud-mission" class="hud-value small">RING RUN</span></div>
+  </div>
+
+  <div id="objective" class="hidden"></div>
+  <div id="toast" class="hidden"></div>
+  <div id="warn" class="hidden">STALL — NOSE DOWN, THROTTLE UP</div>
+
+  <div id="touch-controls" class="hidden">
+    <button id="btn-drop" type="button">DROP</button>
+    <button id="btn-turn" type="button">TURN</button>
+    <button id="btn-thr-up" type="button">THR +</button>
+    <button id="btn-thr-down" type="button">THR −</button>
+  </div>
+
+  <div id="corner-buttons">
+    <button id="btn-sound" type="button" title="Sound on/off (M)">SOUND ON</button>
+    <button id="btn-pause" type="button" title="Pause (P)">II</button>
+  </div>
+
+  <div id="menu" class="overlay">
+    <div class="card">
+      <h1>SKY RUSH</h1>
+      <p class="subtitle">ISLAND COURIER &middot; CENDRAWASIH AIR</p>
+      <p class="tagline">Short hops. Tight fuel. Weather with opinions. Take off, fly the
+      course, and bring her home in one piece.</p>
+      <div id="mission-list"></div>
+      <div class="controls">
+        <div><b>PITCH</b> W / S or &uarr; / &darr; &middot; drag mouse / finger</div>
+        <div><b>THROTTLE</b> D / A or &rarr; / &larr; &middot; wheel</div>
+        <div><b>TURN AROUND</b> T &nbsp; <b>DROP PARCEL</b> Space</div>
+        <div><b>PAUSE</b> P &nbsp; <b>SOUND</b> M &nbsp; <b>RESTART</b> R</div>
+      </div>
+      <p class="hint">Best played with keyboard. Land gently on the runway — flare before
+      touchdown, keep her straight, and watch the fuel.</p>
+    </div>
+  </div>
+
+  <div id="briefing" class="overlay hidden">
+    <div class="card">
+      <h2 id="brief-title">MISSION 1 — RING RUN</h2>
+      <p id="brief-text" class="tagline"></p>
+      <div id="brief-facts" class="facts"></div>
+      <button id="btn-fly" type="button" class="big-btn">TAKE OFF &nbsp;▶</button>
+      <button id="btn-back" type="button" class="ghost-btn">Back to menu</button>
+    </div>
+  </div>
+
+  <div id="pause-card" class="overlay hidden">
+    <div class="card">
+      <h2>PAUSED</h2>
+      <p class="tagline">The plane is holding. The fuel is not.</p>
+      <button id="btn-resume" type="button" class="big-btn">RESUME</button>
+      <button id="btn-quit" type="button" class="ghost-btn">Quit to menu</button>
+    </div>
+  </div>
+
+  <div id="debrief" class="overlay hidden">
+    <div class="card">
+      <h2 id="debrief-title">MISSION COMPLETE</h2>
+      <p id="debrief-stars" class="stars"></p>
+      <div id="debrief-lines" class="facts"></div>
+      <p id="debrief-total" class="total"></p>
+      <button id="btn-next" type="button" class="big-btn">NEXT MISSION</button>
+      <button id="btn-retry" type="button" class="ghost-btn">Fly it again</button>
+      <button id="btn-menu2" type="button" class="ghost-btn">Menu</button>
+    </div>
+  </div>
+
+  <div id="crash-card" class="overlay hidden">
+    <div class="card">
+      <h2 id="crash-title">CRASHED</h2>
+      <p id="crash-reason" class="tagline"></p>
+      <button id="btn-retry2" type="button" class="big-btn">TRY AGAIN</button>
+      <button id="btn-menu3" type="button" class="ghost-btn">Menu</button>
+    </div>
+  </div>
+
+  <p id="status" role="status" aria-live="polite"></p>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
